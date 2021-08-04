@@ -5,13 +5,13 @@ metadata:
   namespace: nginx
 spec:
   rules:
-  - host: "cluster-endpoint"
+  - host: "k8s-cluster-endpoint"
     http:
       paths:
       - pathType: Prefix
         path: "/"
         backend:
           service:
-            name: nginx
+            name: nginx-loadbalancer
             port:
               number: 80

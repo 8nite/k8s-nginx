@@ -12,10 +12,14 @@ data:
       worker_connections  10240;
     }
     http {
+      upstream backend {
+        server 10.0.0.6:8090;
+        server 11.0.255.19:8090;
+      }
       server {
           listen       80;
           location / {
-              return 200 'gangnam style!';
+              proxy_pass  http://backend;
           }
       }
     }

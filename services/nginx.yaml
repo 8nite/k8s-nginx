@@ -4,8 +4,6 @@ metadata:
   name: nginx-loadbalancer
   namespace: nginx
 spec:
-  externalIPs:
-    - 18.141.231.219
   selector:
     app: nginx
   ports:
@@ -14,19 +12,19 @@ spec:
       nodePort: 30080
   type: NodePort
 ---
-apiVersion: v1
-kind: Service
-metadata:
-  name: nginx
-  labels:
-    app: nginx
-  namespace: nginx
-spec:
-  type: ClusterIP
-  selector:
-    app: nginx
-  ports:
-    - port: 80
-      targetPort: 80
-      protocol: TCP
-      name: nginx
+#apiVersion: v1
+#kind: Service
+#metadata:
+#  name: nginx
+#  labels:
+#    app: nginx
+#  namespace: nginx
+#spec:
+#  type: ClusterIP
+#  selector:
+#    app: nginx
+#  ports:
+#    - port: 80
+#      targetPort: 80
+#      protocol: TCP
+#      name: nginx
