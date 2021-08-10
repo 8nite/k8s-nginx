@@ -15,9 +15,15 @@ spec:
       labels:
         app: nginx
     spec:
+      tolerations:
+      # this toleration is to have the daemonset runnable on master nodes
+      # remove it if your masters can't run pods
+      - key: node-role.kubernetes.io/master
+        operator: Exists
+        effect: NoSchedule
       containers:
       - name: nginx
-        image: k8s.gcr.io/nginx-slim:0.8
+        image: nginx:1.21.1
         ports:
         - containerPort: 80
           hostPort: 80
